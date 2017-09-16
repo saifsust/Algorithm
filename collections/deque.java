@@ -11,15 +11,13 @@ public static void main(String[] args)
       int num = read.nextInt();
       for(int i=1;i<=num;i++)
       {
-    dq.addFirst(i*100);
-    dq.addLast(i*10000);
+        dq.add(i*100);
       }
 
 
       while(!dq.isEmpty())
       {
-      	System.out.println(dq.pollFirst());
-      	System.out.println(dq.pollLast());
+        System.out.println(dq.poll());
       }
 
 	}
