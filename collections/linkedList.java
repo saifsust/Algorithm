@@ -8,7 +8,7 @@ public class linkedList{
 	public static void main(String[] args) throws Exception
 	{
 
-		LinkedList<Integer> list[] = new LinkedList[100];
+		LinkedList list[] = new LinkedList[100];
 		Scanner read = new Scanner(System.in);
 		while(read.hasNext())
 		{
