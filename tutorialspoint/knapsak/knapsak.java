@@ -8,7 +8,7 @@ class Main
 
     private final int SIZE_OF_ARRAY = 1000;
     private int[][] matrix = new int[SIZE_OF_ARRAY][SIZE_OF_ARRAY];
-    private int products[], priceOfProducts[], bagSize, numOfProducts;
+    private int products[], priceOfProducts[], bagSize, numOfProducts, isProduct[];
     private  Scanner read;
 
     private void Knapsak() throws Exception
@@ -20,13 +20,13 @@ class Main
         {
             numOfProducts = read.nextInt();
             bagSize = read.nextInt();
-
+            isProduct = new int[SIZE_OF_ARRAY];
             products = new int[numOfProducts + 1];
             priceOfProducts = new int[numOfProducts + 1];
 
-            input();
-
             fresh();
+
+            input();
 
             System.out.println(algorithm());
 
@@ -52,22 +52,11 @@ class Main
             sumOfProduct += products[i];
             for(int j = 1; j <= bagSize; j++)
             {
-                if(j < products[i])
+                if(j<products[i])
                 {
-                    matrix[i][j] = matrix[i - 1][j];
-                }
-                else
-                {
-                    if(j == products[i])
-                    {
-                        matrix[i][j] = Math.max(matrix[i - 1][j], Math.max(matrix[i][j - 1], priceOfProducts[i]));
-                    }
-                    else
-                    {
-                        
-                            int calculation = matrix[i][j - products[i]] + matrix[i][products[i]];
-                            matrix[i][j] = Math.max(calculation, Math.max(matrix[i - 1][j], matrix[i][j - 1]));
-                    }
+                    matrix[i][j]=matrix[i-1][j];
+                }else{
+                    matrix[i][j]=Math.max(matrix[i-1][j],matrix[i-1][j-products[i]]+priceOfProducts[i]);
                 }
             }
         }
@@ -82,6 +71,7 @@ class Main
         for(int i = 1; i <= numOfProducts; i++)
         {
             products[i] = read.nextInt();
+            isProduct[products[i]] = 1;
             priceOfProducts[i] = read.nextInt();
         }
 
@@ -90,6 +80,7 @@ class Main
 
     private void fresh()
     {
+        Arrays.fill(isProduct, 0);
         for(int i = 0; i < SIZE_OF_ARRAY; i++)
         {
             Arrays.fill(matrix[i], 0);
