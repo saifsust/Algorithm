@@ -1,27 +1,75 @@
-package com.LinkListAlgorithm;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+public class Main
+{
 
-public class LinkedList {
+    public static void main(String[] args)
+    {
 
-	public static void main(String[] args) {
-		Node firstNode = new Node(5);
+        Scanner read = new Scanner(System.in);
 
-		Node second = new Node(100);
-		firstNode.nextNode = second;
-		Node third = new Node(200);
-		second.nextNode = third;
-		third.nextNode = null;
 
-		// System.out.println(firstNode.getValue());
+        ListNode head , temp;
+        int num = 3;
+        head = null;
+        temp = null;
+        for(int i = 0; i < 5; i++)
+        {
+        	 num =read.nextInt();
+            temp = new ListNode(num);
+            temp.next=null;
+            if(head == null) head = temp;
+            else
+            {
+                ListNode node = head;
+                while(node.next != null)
+                {
+                    node = node.next;
+                }
+                node.next =temp;
+            }
 
-		Node node = firstNode;
+        }
+        //System.out.println(head.getVal());
+        ListNode node = head;
+        while(node != null)
+        {
+            System.out.println(node.getVal());
+            node = node.next;
+        }
 
-		while (true) {
-			System.out.println(node.getValue());
-			if(node.nextNode==null)break;
-			node = node.nextNode;
 
-		}
+        /*
+                ListNode first = new ListNode(2);
+                ListNode second = new ListNode(3);
+                ListNode third = new ListNode(4);
+                first.next = second;
+                second.next = third;
+                third.next = null;
+                ListNode node = first;
+                while(node != null)
+                {
 
-	}
+                    System.out.println(node.getVal());
+                    node = node.next;
+                }*/
+
+
+        /* while(read.hasNext())
+         {
+             //int num = read.nextInt();
+
+
+
+         }
+        */
+        read.close();
+    }
+
+
+
+
+
 
 }
