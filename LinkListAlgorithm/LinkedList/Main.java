@@ -37,6 +37,7 @@ public class Main
         root.tree(0);
         root.tree(-2);
         root.tree(4);
+        root.tree(3);
         root.inOrderTraverse();
 
     }
